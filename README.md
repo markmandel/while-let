@@ -7,6 +7,10 @@ until a channel is closed (and it returns nil).
 
 ## Usage
 
+```
+(while-let bindings & body)
+```
+
 ### Simple example
 
 Pop each item off the front of a vector and print it out.
