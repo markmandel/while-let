@@ -5,6 +5,12 @@ Repeatedly executes body while test expression is true, evaluating the body with
 I've found this particularly useful with [core.async](https://github.com/clojure/core.async), where you want to loop
 until a channel is closed (and it returns nil).
 
+## Installation
+
+In your project.clj add:
+
+![Clojars Version](https://clojars.org/while-let/latest-version.svg)
+
 ## Usage
 
 ```
