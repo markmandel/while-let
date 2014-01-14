@@ -30,7 +30,7 @@ Pop each item off the front of a vector and print it out.
 
 ### Core.async example:
 
-Take from a channel until it gets closed (a closed channel will return `nil`)
+Take from a channel until it gets closed (a closed channel will return `nil`), or the channel returns `false`
 
 ```clojure
 (go (while-let [data (<! (channel))]
