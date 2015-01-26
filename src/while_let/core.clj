@@ -6,6 +6,6 @@
     [bindings & body]
     (let [form (first bindings) test (second bindings)]
         `(loop [~form ~test]
-             ~@body
              (when ~form
+                 ~@body
                  (recur ~test)))))

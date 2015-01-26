@@ -6,8 +6,7 @@
       (macroexpand
           '(while-let [form test]
                       (body))) => '(loop* [form test]
-                                          (body)
-                                          (clojure.core/when form (recur test)))
+                                          (clojure.core/when form (body) (recur test)))
       )
 
 (fact "Should continue to loop until the vector is empty"
@@ -17,3 +16,8 @@
                      (swap! data rest))
           (empty? @data) => true))
 
+(fact "Should never act on false or nil"
+      (let [data (atom [1 2 3 4 5])]
+          (while-let [item (first @data)]
+                     (boolean item) => true
+                     (swap! data rest))))
