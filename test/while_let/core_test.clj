@@ -21,3 +21,9 @@
           (while-let [item (first @data)]
                      (boolean item) => true
                      (swap! data rest))))
+
+(fact "Should correctly handle complex pattern match"
+      (let [data (atom [{:item :test}])]
+        (while-let [{:keys [item]} (first @data)]
+                   item => :test
+                   (swap! data rest))))
