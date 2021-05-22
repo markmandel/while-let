@@ -1,4 +1,4 @@
-(defproject while-let "0.2.0"
+(defproject while-let "0.3.0"
     :description "Repeatedly executes body while test expression is true, evaluating the body with binding-form bound to the value of test."
     :url "https://github.com/markmandel/while-let"
     :license {:name "Eclipse Public License"
