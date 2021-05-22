@@ -4,7 +4,7 @@
 (defmacro while-let
     "Repeatedly executes body while test expression is true, evaluating the body with binding-form bound to the value of test."
     [[form test] & body]
-    `(loop [~form ~test]
-         (when ~form
+    `(loop []
+       (when-let [~form ~test]
              ~@body
-             (recur ~test))))
+             (recur))))

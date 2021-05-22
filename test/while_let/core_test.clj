@@ -5,9 +5,8 @@
 (fact "Macro expand of while-let should be in the format I expect"
       (macroexpand
           '(while-let [form test]
-                      (body))) => '(loop* [form test]
-                                          (clojure.core/when form (body) (recur test)))
-      )
+                      (body))) => '(loop* []
+                                          (clojure.core/when-let [form test] (body) (recur))))
 
 (fact "Should continue to loop until the vector is empty"
       (let [data (atom [1 2 3 4 5])]
@@ -21,3 +20,9 @@
           (while-let [item (first @data)]
                      (boolean item) => true
                      (swap! data rest))))
+
+(fact "Should correctly handle complex pattern match"
+      (let [data (atom [{:item :test}])]
+        (while-let [{:keys [item]} (first @data)]
+                   item => :test
+                   (swap! data rest))))
